@@ -12,8 +12,12 @@ install! 'cocoapods',
 target 'rentx' do
   use_expo_modules!
   config = use_native_modules!
-
+  
   use_frameworks! :linkage => podfile_properties['ios.useFrameworks'].to_sym if podfile_properties['ios.useFrameworks']
+  
+    pod 'React-jsi', :path => '../node_modules/react-native/ReactCommon/jsi', :modular_headers => true
+    pod 'simdjson', path: '../node_modules/@nozbe/simdjson'
+  
 
   # Flags change depending on the env values.
   flags = get_default_flags()
@@ -29,6 +33,7 @@ target 'rentx' do
     # Note that if you have use_frameworks! enabled, Flipper will not work
     # :flipper_configuration => !ENV['CI'] ? FlipperConfiguration.enabled : FlipperConfiguration.disabled,
   )
+  
 
   post_install do |installer|
     react_native_post_install(

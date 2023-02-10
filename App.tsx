@@ -15,6 +15,7 @@ import {
 import * as SplashScreen from 'expo-splash-screen';
 import theme from './src/styles/theme';
 import { Routes } from './src/routes';
+import { AppProvider } from './src/hooks';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -43,7 +44,9 @@ export function App() {
       onLayout={onLayoutRootView}
     >
       <ThemeProvider theme={theme}>
-        <Routes />
+        <AppProvider>
+          <Routes />
+        </AppProvider>
       </ThemeProvider>
     </GestureHandlerRootView>
   );
