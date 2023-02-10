@@ -1,0 +1,6 @@
+module Pods_rentx {
+  umbrella header "Pods-rentx-umbrella.h"
+
+  export *
+  module * { export * }
+}
